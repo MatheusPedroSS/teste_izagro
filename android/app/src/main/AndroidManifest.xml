@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.pedro.precoapp.teste_izagro">
+=======
+    package="com.example.teste_izagro">
+>>>>>>> c86e8b3154ecdc1e784d1b5e6792d48fa4f101fc
    <application
         android:label="teste_izagro"
         android:icon="@mipmap/ic_launcher">
