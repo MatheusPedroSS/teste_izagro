@@ -34,7 +34,11 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+<<<<<<< HEAD
+        applicationId "com.pedro.precoapp.teste_izagro"
+=======
         applicationId "com.example.teste_izagro"
+>>>>>>> c86e8b3154ecdc1e784d1b5e6792d48fa4f101fc
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
