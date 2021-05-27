@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste_izagro/src/TelaLogin.dart';
+import 'package:teste_izagro/src/pages/TelaLogin.dart';
 
 void main() {
   runApp(MaterialApp(

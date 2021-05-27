@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste_izagro/src/components/input.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({required Key key}) : super(key: key);
@@ -8,10 +9,13 @@ class TelaLogin extends StatefulWidget {
 }
 
 class _TelaLoginState extends State<TelaLogin> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
+          color: Color.fromRGBO(255, 255, 255, 1),
           child: Padding(
             padding: EdgeInsets.only(top: 50, right: 16, left: 16, bottom: 16),
             child: Column(
@@ -29,21 +33,13 @@ class _TelaLoginState extends State<TelaLogin> {
                           color: Colors.black,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(16),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
+                      Input(
+                        key: Key("inputLogin"),
+                        hintText: "Email",
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(16),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
+                      Input(
+                        key: Key("InputSenha"),
+                        hintText: "Senha",
                       ),
                       Padding(
                         padding: EdgeInsets.all(16),
@@ -52,9 +48,10 @@ class _TelaLoginState extends State<TelaLogin> {
                             primary: Color.fromRGBO(104, 52, 254, 1),
                           ),
                           child: Text("Entrar"),
-                          onPressed: () => {},
+                          onPressed: () => {
+                          },
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )
