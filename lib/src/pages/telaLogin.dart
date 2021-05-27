@@ -60,6 +60,15 @@ class _TelaLoginState extends State<TelaLogin> {
                           },
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.all(16),
+                        child: InkWell(
+                          child: Text('Não tem uma conta? Clique aqui'),
+                          onTap: () => {
+                            Navigator.pushNamed(context, 'register')
+                          },
+                        ),
+                      )
                     ],
                   ),
                 )
