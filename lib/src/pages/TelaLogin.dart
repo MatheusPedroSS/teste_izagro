@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/components/input.dart';
+import 'package:teste_izagro/src/models/user.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({required Key key}) : super(key: key);
@@ -9,6 +10,8 @@ class TelaLogin extends StatefulWidget {
 }
 
 class _TelaLoginState extends State<TelaLogin> {
+
+  User user = new User();
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +39,14 @@ class _TelaLoginState extends State<TelaLogin> {
                       Input(
                         key: Key("inputLogin"),
                         hintText: "Email",
+                        isPassword: false,
+                        onSubmitted: (value) => user.setEmail(value.toString()),
                       ),
                       Input(
                         key: Key("InputSenha"),
                         hintText: "Senha",
+                        isPassword: true,
+                        onSubmitted: (value) => user.setSenha(value.toString()),
                       ),
                       Padding(
                         padding: EdgeInsets.all(16),
@@ -49,6 +56,7 @@ class _TelaLoginState extends State<TelaLogin> {
                           ),
                           child: Text("Entrar"),
                           onPressed: () => {
+                            print(user.toString())
                           },
                         ),
                       ),
