@@ -56,7 +56,7 @@ class _TelaLoginState extends State<TelaLogin> {
                           ),
                           child: Text("Entrar"),
                           onPressed: () => {
-                            print(user.toString())
+                            Navigator.pushNamed(context, 'home')
                           },
                         ),
                       ),

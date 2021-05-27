@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
                           ),
                           child: Text("Registrar"),
                           onPressed: () => {
-                            print(user.toString())
+                            Navigator.pushNamed(context, 'home')
                           },
                         ),
                       ),
