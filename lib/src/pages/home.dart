@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:teste_izagro/src/components/buttonNavigator.dart';
+import 'package:teste_izagro/src/components/subTitle.dart';
+import 'package:teste_izagro/src/components/title.dart';
 
 class Home extends StatelessWidget {
   const Home({required Key key}) : super(key: key);
@@ -10,50 +13,26 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: EdgeInsets.all(50),
+            padding: EdgeInsets.all(16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20),
-                  child: Text(
-                    'Bem vindo!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 40
-                    ),
-                  ),
+                TextTitle(
+                    text: 'Bem vindo!',
+                    color: Colors.black
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 100),
-                  child: Text(
-                    'Somos uma plataforma que calcula quanto custa um aplicativo',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
+                TextSubTitle(
+                    text: 'Somos uma plataforma que calcula quanto custa um aplicativo',
+                    color: Colors.black
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 100),
-                  child: Text(
-                    'Se você é Desenvolvedor e não sabe quanto cobrar, vem comigo!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 20
-                    ),
-                  ),
+                TextSubTitle(
+                    text: 'Se você é Desenvolvedor e não sabe quanto cobrar, vem comigo!',
+                    color: Colors.black
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 100),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Color.fromRGBO(0, 0, 0, 1),
-                    ),
-                    child: Text("Começar"),
-                    onPressed: () => {
-                    },
-                  ),
+                ButtonNavigator(
+                  text: 'Começar',
+                  color: Colors.black,
+                  route: '',
                 ),
               ],
             ),

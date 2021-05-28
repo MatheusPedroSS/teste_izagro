@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:teste_izagro/src/components/buttonNavigator.dart';
 import 'package:teste_izagro/src/components/input.dart';
+import 'package:teste_izagro/src/components/title.dart';
 import 'package:teste_izagro/src/models/user.dart';
 
 class Register extends StatefulWidget {
@@ -19,21 +21,18 @@ class _RegisterState extends State<Register> {
       body: Container(
           color: Color.fromRGBO(255, 255, 255, 1),
           child: Padding(
-            padding: EdgeInsets.only(top: 50, right: 16, left: 16, bottom: 16),
+            padding: EdgeInsets.only(top: 20, right: 16, left: 16, bottom: 20),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset("images/undraw_Connected_re_lmq2.png"),
                 Padding(
                   padding: EdgeInsets.only(top: 16),
                   child: Column(
                     children: [
-                      Text(
-                        "Registrar",
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          fontSize: 36,
-                          color: Colors.black,
-                        ),
+                      TextTitle(
+                          text: 'Registrar',
+                          color: Colors.black
                       ),
                       Input(
                         key: Key("inputLogin"),
@@ -47,17 +46,10 @@ class _RegisterState extends State<Register> {
                         isPassword: true,
                         onSubmitted: (value) => user.setSenha(value.toString()),
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(16),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Color.fromRGBO(104, 52, 254, 1),
-                          ),
-                          child: Text("Registrar"),
-                          onPressed: () => {
-                            Navigator.pushNamed(context, 'home')
-                          },
-                        ),
+                      ButtonNavigator(
+                        text: 'Registrar',
+                        color: Color.fromRGBO(104, 52, 254, 1),
+                        route: 'home',
                       ),
                     ],
                   ),

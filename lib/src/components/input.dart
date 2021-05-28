@@ -22,7 +22,7 @@ class _InputState extends State<Input> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(12),
       child: TextField(
         obscureText: _isPassword,
         decoration: InputDecoration(
