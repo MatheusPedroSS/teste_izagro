@@ -7,8 +7,7 @@ class QuestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-        child: Container(
+    return Container(
           child: Row(
             children: [
               Image.asset(
@@ -28,7 +27,6 @@ class QuestionCard extends StatelessWidget {
               )
             ],
           ),
-        )
-    );
+        );
   }
 }
