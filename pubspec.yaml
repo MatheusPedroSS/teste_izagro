@@ -50,8 +50,17 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - images/undraw_lightbulb_moment_evxr.png
+    - images/undraw_building_websites_i78t.png
     - images/undraw_Connected_re_lmq2.png
+    - images/undraw_design_objectives_fy1r.png
+    - images/undraw_lightbulb_moment_evxr.png
+    - images/undraw_Mobile_application_mr4r.png
+    - images/undraw_my_app_re_gxtj.png
+    - images/undraw_personal_finance_tqcd.png
+    - images/undraw_Website_setup_re_d4y9.png
+    - images/Vector.png
+    - images/Vector-3.png
+    - images/vetor-4.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

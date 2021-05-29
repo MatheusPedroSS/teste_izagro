@@ -17,22 +17,13 @@ class Home extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextTitle(
-                    text: 'Bem vindo!',
-                    color: Colors.black
-                ),
-                TextSubTitle(
-                    text: 'Somos uma plataforma que calcula quanto custa um aplicativo',
-                    color: Colors.black
-                ),
-                TextSubTitle(
-                    text: 'Se você é Desenvolvedor e não sabe quanto cobrar, vem comigo!',
-                    color: Colors.black
-                ),
+                TextTitle('Bem vindo!'),
+                TextSubTitle('Somos uma plataforma que calcula quanto custa um aplicativo'),
+                TextSubTitle('Se você é Desenvolvedor e não sabe quanto cobrar, vem comigo!'),
                 ButtonNavigator(
                   text: 'Começar',
                   color: Colors.black,
-                  route: '',
+                  route: 'questions',
                 ),
               ],
             ),

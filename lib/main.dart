@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/pages/home.dart';
+import 'package:teste_izagro/src/pages/questions.dart';
 import 'package:teste_izagro/src/pages/register.dart';
-import 'package:teste_izagro/src/pages/telaLogin.dart';
+import 'package:teste_izagro/src/pages/login.dart';
 
 void main() {
   runApp(MyApp(key: Key('root'),));
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'login' : (context) => TelaLogin(key: Key('login'),),
         'register' : (context) => Register(key: Key('register')),
-        'home' : (context) => Home(key: Key('home'))
+        'home' : (context) => Home(key: Key('home')),
+        'questions': (context) => Questions(key: Key('questions'))
       },
       home: TelaLogin(key: Key("TelaLogin"),),
     );

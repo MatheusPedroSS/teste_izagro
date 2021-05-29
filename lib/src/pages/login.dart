@@ -4,19 +4,20 @@ import 'package:teste_izagro/src/components/input.dart';
 import 'package:teste_izagro/src/components/title.dart';
 import 'package:teste_izagro/src/models/user.dart';
 
-class Register extends StatefulWidget {
-  const Register({required Key key}) : super(key: key);
+class TelaLogin extends StatefulWidget {
+  const TelaLogin({required Key key}) : super(key: key);
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _TelaLoginState createState() => _TelaLoginState();
 }
 
-class _RegisterState extends State<Register> {
+class _TelaLoginState extends State<TelaLogin> {
 
   User user = new User();
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -26,17 +27,19 @@ class _RegisterState extends State<Register> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset("images/undraw_Connected_re_lmq2.png"),
+                  Image.asset("images/undraw_lightbulb_moment_evxr.png"),
                   Padding(
                     padding: EdgeInsets.only(top: 16),
                     child: Column(
                       children: [
-                        TextTitle('Registrar'),
+                        TextTitle('Login'),
                         Input(
                           key: Key("inputLogin"),
                           hintText: "Email",
                           isPassword: false,
-                          onSubmitted: (value) => user.setEmail(value.toString()),
+                          onSubmitted: (value) => {
+                            user.setEmail(value.toString())
+                          },
                         ),
                         Input(
                           key: Key("InputSenha"),
@@ -45,10 +48,19 @@ class _RegisterState extends State<Register> {
                           onSubmitted: (value) => user.setSenha(value.toString()),
                         ),
                         ButtonNavigator(
-                          text: 'Registrar',
+                          text: 'Entrar',
                           color: Color.fromRGBO(104, 52, 254, 1),
                           route: 'home',
                         ),
+                        Padding(
+                          padding: EdgeInsets.all(16),
+                          child: InkWell(
+                            child: Text('Não tem uma conta? Clique aqui'),
+                            onTap: () => {
+                              Navigator.pushNamed(context, 'register')
+                            },
+                          ),
+                        )
                       ],
                     ),
                   )
