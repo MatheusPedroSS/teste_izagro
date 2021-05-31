@@ -1,8 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:teste_izagro/src/components/buttonNavigator.dart';
 import 'package:teste_izagro/src/components/input.dart';
 import 'package:teste_izagro/src/components/title.dart';
-import 'package:teste_izagro/src/models/user.dart';
 
 class Register extends StatefulWidget {
   const Register({required Key key}) : super(key: key);
@@ -13,7 +12,26 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  User user = new User();
+  var _email = '';
+  var _senha = '';
+
+  void register (BuildContext context) async {
+    try{
+      UserCredential userFirebase = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: _email, password: _senha);
+      if(userFirebase != null) {
+        _email = '';
+        _senha = '';
+        Navigator.pushNamed(context, 'home');
+      }
+    } catch(e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Falha ao criar o usuário, favor tentar novamente"),
+        backgroundColor: Colors.redAccent,
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +54,27 @@ class _RegisterState extends State<Register> {
                           key: Key("inputLogin"),
                           hintText: "Email",
                           isPassword: false,
-                          onSubmitted: (value) => user.setEmail(value.toString()),
+                          onSubmitted: (value) => _email = value.toString(),
                         ),
                         Input(
                           key: Key("InputSenha"),
                           hintText: "Senha",
                           isPassword: true,
-                          onSubmitted: (value) => user.setSenha(value.toString()),
+                          onSubmitted: (value) => _senha = value.toString(),
                         ),
-                        ButtonNavigator(
-                          text: 'Registrar',
-                          color: Color.fromRGBO(104, 52, 254, 1),
-                          route: 'home',
-                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromRGBO(104, 52, 254, 1),
+                              padding: EdgeInsets.only(top: 19, bottom: 19),
+                            ),
+                            child: Text('Registrar'),
+                            onPressed: () => {
+                              register(context),
+                            },
+                          ),
+                        )
                       ],
                     ),
                   )

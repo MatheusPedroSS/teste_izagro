@@ -1,4 +1,4 @@
-class User {
+class UserApp {
   var _name;
   var _email;
   var _senha;

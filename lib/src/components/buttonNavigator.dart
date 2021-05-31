@@ -22,7 +22,6 @@ class ButtonNavigator extends StatelessWidget {
           child: Text(text),
           onPressed: () => {
             Navigator.pushNamed(context, route)
-
           },
         ),
       )

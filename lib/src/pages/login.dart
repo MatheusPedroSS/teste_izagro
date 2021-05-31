@@ -13,7 +13,7 @@ class TelaLogin extends StatefulWidget {
 
 class _TelaLoginState extends State<TelaLogin> {
 
-  User user = new User();
+  UserApp user = new UserApp();
 
   @override
   Widget build(BuildContext context) {

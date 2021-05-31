@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "408798232341",
+    "project_id": "teste-izagro",
+    "storage_bucket": "teste-izagro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408798232341:android:c440e3618f600e1bf7f31c",
+        "android_client_info": {
+          "package_name": "com.pedro.teste_izagro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408798232341-nuie0onu5bvilvgn4ctoqcjp4rqv0bh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBJeOhTib8oSBVxU4XmYN3kJTQfQ9T708"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408798232341-nuie0onu5bvilvgn4ctoqcjp4rqv0bh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

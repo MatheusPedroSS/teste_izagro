@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/pages/home.dart';
 import 'package:teste_izagro/src/pages/questions.dart';
 import 'package:teste_izagro/src/pages/register.dart';
 import 'package:teste_izagro/src/pages/login.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp(key: Key('root'),));
 }
 
