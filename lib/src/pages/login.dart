@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:teste_izagro/src/components/buttonNavigator.dart';
 import 'package:teste_izagro/src/components/input.dart';
 import 'package:teste_izagro/src/components/title.dart';
-import 'package:teste_izagro/src/models/user.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({required Key key}) : super(key: key);

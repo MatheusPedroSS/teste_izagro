@@ -1,3 +1,6 @@
+import 'dart:collection';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/components/input.dart';
@@ -12,15 +15,30 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  var _nome = '';
   var _email = '';
   var _senha = '';
+
+  void _saveBD() async {
+    try{
+      await firestore.collection('users').add({
+        'nome': this._nome,
+        'email': this._email,
+      });
+    } catch(e) {
+      print(e);
+    }
+  }
 
   void register (BuildContext context) async {
     try{
       UserCredential userFirebase = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: _email, password: _senha);
       if(userFirebase != null) {
-        Navigator.pushNamed(context, 'home');
+        _saveBD();
+        Navigator.pushNamed(context, 'login');
       }
     } catch(e) {
       print(e);
@@ -48,6 +66,12 @@ class _RegisterState extends State<Register> {
                     child: Column(
                       children: [
                         TextTitle('Registrar'),
+                        Input(
+                          key: Key("inputNome"),
+                          hintText: "nome",
+                          isPassword: false,
+                          onSubmitted: (value) => _nome = value.toString(),
+                        ),
                         Input(
                           key: Key("inputLogin"),
                           hintText: "Email",
