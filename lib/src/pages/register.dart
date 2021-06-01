@@ -1,10 +1,9 @@
-import 'dart:collection';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/components/input.dart';
 import 'package:teste_izagro/src/components/title.dart';
+import 'package:teste_izagro/src/models/user.dart';
+import 'package:teste_izagro/src/repository/userRepository.dart';
 
 class Register extends StatefulWidget {
   const Register({required Key key}) : super(key: key);
@@ -15,29 +14,15 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-  var _nome = '';
-  var _email = '';
-  var _senha = '';
-
-  void _saveBD() async {
-    try{
-      await firestore.collection('users').add({
-        'nome': this._nome,
-        'email': this._email,
-      });
-    } catch(e) {
-      print(e);
-    }
-  }
+  UserApp userApp = new UserApp();
 
   void register (BuildContext context) async {
     try{
       UserCredential userFirebase = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: _email, password: _senha);
+          .createUserWithEmailAndPassword(email: userApp.email.toString(), password: userApp.senha.toString());
       if(userFirebase != null) {
-        _saveBD();
+        userApp.id = userFirebase.user!.uid;
+        UserRepository.save(userApp);
         Navigator.pushNamed(context, 'login');
       }
     } catch(e) {
@@ -70,19 +55,19 @@ class _RegisterState extends State<Register> {
                           key: Key("inputNome"),
                           hintText: "nome",
                           isPassword: false,
-                          onSubmitted: (value) => _nome = value.toString(),
+                          onSubmitted: (value) => userApp.nome = value.toString(),
                         ),
                         Input(
                           key: Key("inputLogin"),
                           hintText: "Email",
                           isPassword: false,
-                          onSubmitted: (value) => _email = value.toString(),
+                          onSubmitted: (value) => userApp.email = value.toString(),
                         ),
                         Input(
                           key: Key("InputSenha"),
                           hintText: "Senha",
                           isPassword: true,
-                          onSubmitted: (value) => _senha = value.toString(),
+                          onSubmitted: (value) => userApp.senha = value.toString(),
                         ),
                         SizedBox(
                           width: double.infinity,
