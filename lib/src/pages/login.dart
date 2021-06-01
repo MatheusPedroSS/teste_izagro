@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/components/buttonNavigator.dart';
 import 'package:teste_izagro/src/components/input.dart';
@@ -13,7 +14,24 @@ class TelaLogin extends StatefulWidget {
 
 class _TelaLoginState extends State<TelaLogin> {
 
-  UserApp user = new UserApp();
+  var _email = '';
+  var _senha = '';
+
+  void doLogin(BuildContext context) async {
+    try{
+      UserCredential userFirebase = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: _email, password: _senha);
+      if(userFirebase != null) {
+        Navigator.pushNamed(context, 'home');
+      }
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Falha ao realizar o Login"),
+        backgroundColor: Colors.redAccent,
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +55,26 @@ class _TelaLoginState extends State<TelaLogin> {
                           key: Key("inputLogin"),
                           hintText: "Email",
                           isPassword: false,
-                          onSubmitted: (value) => {
-                            user.setEmail(value.toString())
-                          },
+                          onSubmitted: (value) => _email = value.toString(),
                         ),
                         Input(
                           key: Key("InputSenha"),
                           hintText: "Senha",
                           isPassword: true,
-                          onSubmitted: (value) => user.setSenha(value.toString()),
+                          onSubmitted: (value) => _senha = value.toString(),
                         ),
-                        ButtonNavigator(
-                          text: 'Entrar',
-                          color: Color.fromRGBO(104, 52, 254, 1),
-                          route: 'home',
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromRGBO(104, 52, 254, 1),
+                              padding: EdgeInsets.only(top: 19, bottom: 19),
+                            ),
+                            child: Text('Login'),
+                            onPressed: () => {
+                              doLogin(context),
+                            },
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.all(16),

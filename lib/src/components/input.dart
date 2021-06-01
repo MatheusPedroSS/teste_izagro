@@ -32,7 +32,7 @@ class _InputState extends State<Input> {
         style: TextStyle(
             fontSize: 20
         ),
-        onSubmitted: (value) {
+        onChanged: (value) {
           onSubmitted(value.toString());
         },
       ),
