@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:teste_izagro/src/components/input.dart';
 import 'package:teste_izagro/src/components/title.dart';
+import 'package:teste_izagro/src/models/user.dart';
+import 'package:teste_izagro/src/repository/userRepository.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({required Key key}) : super(key: key);
@@ -12,14 +14,14 @@ class TelaLogin extends StatefulWidget {
 
 class _TelaLoginState extends State<TelaLogin> {
 
-  var _email = '';
-  var _senha = '';
+  UserApp user = UserApp();
 
   void doLogin(BuildContext context) async {
     try{
       UserCredential userFirebase = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email, password: _senha);
+          .signInWithEmailAndPassword(email: user.email, password: user.senha);
       if(userFirebase != null) {
+        user.nome = await UserRepository.getNome(userFirebase.user!.uid);
         Navigator.pushNamed(context, 'home');
       }
     } catch (e) {
@@ -53,13 +55,13 @@ class _TelaLoginState extends State<TelaLogin> {
                           key: Key("inputLogin"),
                           hintText: "Email",
                           isPassword: false,
-                          onSubmitted: (value) => _email = value.toString(),
+                          onSubmitted: (value) => user.email = value.toString(),
                         ),
                         Input(
                           key: Key("InputSenha"),
                           hintText: "Senha",
                           isPassword: true,
-                          onSubmitted: (value) => _senha = value.toString(),
+                          onSubmitted: (value) => user.senha = value.toString(),
                         ),
                         SizedBox(
                           width: double.infinity,

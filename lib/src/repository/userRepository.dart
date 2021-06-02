@@ -16,5 +16,15 @@ class UserRepository{
     }
   }
 
+  static getNome(String docId) async {
+      DocumentSnapshot documentSnapshot;
+    try {
+      documentSnapshot = await _firestore.collection('users').doc(docId).get();
+      return documentSnapshot.get('nome');
+    } catch(e) {
+
+    }
+  }
+
 
 }
